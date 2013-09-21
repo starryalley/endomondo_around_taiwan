@@ -1,0 +1,4 @@
+/* for the added Trips around Taiwan icon */
+.vars li.aroundTW {
+    background:transparent url('chrome-extension://__MSG_@@extension_id__/tw-19.png') no-repeat 0 center;
+}
