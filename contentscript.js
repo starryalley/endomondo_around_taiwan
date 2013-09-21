@@ -41,6 +41,7 @@ function DOMModificationHandler(){
         console.log("reload dist=" + dist);
         add_trip_around_tw(dist);
         $('.innerWidget.personal-best').bind('DOMSubtreeModified',DOMModificationHandler);
+        $('.innerWidget.personalSummary').bind('DOMSubtreeModified', DOMModificationHandler);
     }, 500); //is 500ms safe enough?
 }
 
@@ -51,7 +52,8 @@ console.log("User total distance:" + dist);
 add_trip_around_tw(dist);
 
 // set a listener for DOMSubtreeModified event
-$('.innerWidget.personal-best').bind('DOMSubtreeModified', DOMModificationHandler);
+$('.innerWidget.personal-best').bind('DOMSubtreeModified', DOMModificationHandler);i//page: home
+$('.innerWidget.personalSummary').bind('DOMSubtreeModified', DOMModificationHandler);//page: /profile/*
 
 // notify the background page
 chrome.extension.sendRequest({}, function(response) {});

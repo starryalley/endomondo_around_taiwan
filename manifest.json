@@ -15,7 +15,8 @@
   "content_scripts" : [
     {
       "matches" : [
-        "http://www.endomondo.com/home*"
+        "http://www.endomondo.com/home*",
+        "http://www.endomondo.com/profile/*"
       ],
       "js" : ["jquery-1.10.2.min.js", "contentscript.js"],
       "css" : ["style.css"],
