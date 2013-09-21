@@ -1,6 +1,6 @@
 {
   "name" : "Endomondo Around Taiwan",
-  "version" : "0.2",
+  "version" : "0.2.1",
   "description" : "Shows a 'Trips around Taiwan' in overall summary page on Endomondo site",
   "background" : {
     "scripts": ["background.js"]

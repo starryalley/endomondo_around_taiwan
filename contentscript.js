@@ -1,5 +1,8 @@
 // total distance of T1+T9 road surrounding Taiwan, got from wiki
 var AROUND_TW_DISTANCE = 460.6+476.072;
+var TAG = "[Endomondo Around Taiwan] ";
+
+function log(str) { console.log(TAG + str); }
 
 function xpath(path, node) { return document.evaluate(path, node).iterateNext(); }
 
@@ -17,7 +20,7 @@ function get_distance() {
 function add_trip_around_tw(distance) {
     var trips = parseFloat(distance) / AROUND_TW_DISTANCE;
     var ul = $('.userSummary.distance').find('.vars');
-    console.log("Calculated trips around TW: " + trips.toFixed(3));
+    log("Calculated trips around TW: " + trips.toFixed(3));
 
     // create a <li> element
     var elem = $('<li/>', { id: 'trip_around_tw' });
@@ -38,7 +41,7 @@ function DOMModificationHandler(){
     $(this).unbind('DOMSubtreeModified');
     setTimeout(function(){
         var dist = get_distance();
-        console.log("reload dist=" + dist);
+        log("Reload total distance:" + dist);
         add_trip_around_tw(dist);
         $('.innerWidget.personal-best').bind('DOMSubtreeModified',DOMModificationHandler);
         $('.innerWidget.personalSummary').bind('DOMSubtreeModified', DOMModificationHandler);
@@ -48,11 +51,11 @@ function DOMModificationHandler(){
 // main
 // update UI first
 var dist = get_distance();
-console.log("User total distance:" + dist);
+log("User total distance:" + dist);
 add_trip_around_tw(dist);
 
 // set a listener for DOMSubtreeModified event
-$('.innerWidget.personal-best').bind('DOMSubtreeModified', DOMModificationHandler);i//page: home
+$('.innerWidget.personal-best').bind('DOMSubtreeModified', DOMModificationHandler);//page: home
 $('.innerWidget.personalSummary').bind('DOMSubtreeModified', DOMModificationHandler);//page: /profile/*
 
 // notify the background page
